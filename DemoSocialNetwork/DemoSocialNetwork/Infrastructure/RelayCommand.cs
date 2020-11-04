@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace _3tier_wpf.Infrastructure
+namespace DemoSocialNetwork.Infrastructure
 {
     class RelayCommand : ICommand
     {

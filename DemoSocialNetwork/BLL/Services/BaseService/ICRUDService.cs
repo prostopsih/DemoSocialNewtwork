@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Services.BaseService
 {
-    public interface IService<T>
+    public interface ICRUDService<T>
     {
         T Get(int id);
         IEnumerable<T> GetAll();

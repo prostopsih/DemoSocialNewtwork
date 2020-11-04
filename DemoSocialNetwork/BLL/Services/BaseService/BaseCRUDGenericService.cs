@@ -11,12 +11,12 @@ using BLL.Services.UnitOfWork;
 
 namespace BLL.Services.BaseService
 {
-    public abstract class BaseGenericService<TEntityModel, TDTModel> : IService<TDTModel> where TEntityModel : class where TDTModel : IDTO
+    public abstract class BaseCRUDGenericService<TEntityModel, TDTModel> : ICRUDService<TDTModel> where TEntityModel : class where TDTModel : IDTO
     {
         protected IRepository<TEntityModel> repository;
         protected IUnitOfWork unitOfWork;
         protected IMapper mapper;
-        public BaseGenericService(IRepository<TEntityModel> repository, IUnitOfWork unitOfWork, IMapper mapper)
+        public BaseCRUDGenericService(IRepository<TEntityModel> repository, IUnitOfWork unitOfWork, IMapper mapper)
         {
             this.repository = repository;
             this.unitOfWork = unitOfWork;

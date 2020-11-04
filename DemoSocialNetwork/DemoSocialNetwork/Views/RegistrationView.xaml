@@ -1,0 +1,23 @@
+﻿<Window x:Class="DemoSocialNetwork.Views.RegistrationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoSocialNetwork.Views"
+        mc:Ignorable="d"
+        Title="RegistrationView" Height="220" Width="220"
+        DataContext="{StaticResource vmlocator}"
+        x:Name="wnd">
+    <Grid DataContext="{Binding RegistrationViewModel}">
+        <StackPanel Margin="20">
+            <TextBlock Text="Login:"></TextBlock>
+            <TextBox Text="{Binding User.UserAuthorizationInfo.Login}"></TextBox>
+            <TextBlock Text="Password:"></TextBlock>
+            <TextBox Text="{Binding User.UserAuthorizationInfo.Password}"></TextBox>
+            <TextBlock Text="UserName:"></TextBlock>
+            <TextBox Text="{Binding User.UserPublicInfo.UserName}"></TextBox>
+            <Button Command="{Binding RegisterCommand}" CommandParameter="{Binding ElementName=wnd}">Register</Button>
+            <TextBlock Text="{Binding ErrorMessage}"></TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>
