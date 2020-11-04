@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    public class GenericRepository<T> : IRepository<T> where T : class
+    public class BaseGenericRepository<T> : IRepository<T> where T : class
     {
         DbContext context;
         IDbSet<T> table;
-        public GenericRepository(DbContext context)
+        public BaseGenericRepository(DbContext context)
         {
             this.context = context;
             table = context.Set<T>();
