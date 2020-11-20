@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoSocialNetwork.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,16 +11,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace DemoSocialNetwork.Views
 {
     /// <summary>
-    /// Логика взаимодействия для LogInView.xaml
+    /// Логика взаимодействия для Registration.xaml
     /// </summary>
-    public partial class LogInView : Window
+    public partial class RegistrationView : UserControl
     {
-        public LogInView()
+        public RegistrationView()
         {
             InitializeComponent();
         }

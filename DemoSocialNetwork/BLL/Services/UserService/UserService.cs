@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace BLL.Services.UserService
 {
@@ -34,6 +35,11 @@ namespace BLL.Services.UserService
             });
             mapper = new Mapper(config);
         }
+
+        public event Action LogInned;
+        public event Action LogOuted;
+        public event Action Registered;
+
         public bool CreateNewAccount(UserDTO user)
         {
             try
@@ -41,6 +47,7 @@ namespace BLL.Services.UserService
                 User newOne = mapper.Map<User>(user);
                 userRepository.CreateOrUpdate(newOne);
                 unitOfWork.Save();
+                Registered?.Invoke();
                 return true;
             }
             catch
@@ -82,6 +89,7 @@ namespace BLL.Services.UserService
             {
                 UserPublicInfo publicInfo = mapper.Map<UserPublicInfo>(user);
                 LoginnedUser.CreateNewOne(user.UserId, publicInfo);
+                LogInned?.Invoke();
                 return publicInfo;
             }
             else
@@ -90,16 +98,24 @@ namespace BLL.Services.UserService
         public void LogOut()
         {
             LoginnedUser.Clear();
+            LogOuted?.Invoke();
         }
 
 
         private User Verify(UserAuthorizationInfo authorizationInfo)
         {
-            User user = userRepository.Get(userRepository.GetAll().ToList().Find(x => x.Login == authorizationInfo.Login).UserId);
-            if (user.Password == authorizationInfo.Password)
-                return user;
-            else
+            try
+            {
+                User user = userRepository.Get(userRepository.GetAll().ToList().Find(x => x.Login == authorizationInfo.Login).UserId);
+                if (user.Password == authorizationInfo.Password)
+                    return user;
+                else
+                    return null;
+            }
+            catch
+            {
                 return null;
+            }
         }
     }
 }

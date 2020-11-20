@@ -1,5 +1,7 @@
 ﻿using BLL.Modules;
 using DemoSocialNetwork.ViewModels;
+using DemoSocialNetwork.ViewModels.AuthorizationViewModels;
+using DemoSocialNetwork.ViewModels.UserViewModels;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -16,8 +18,11 @@ namespace DemoSocialNetwork.Infrastructure
         {
             kernel = new StandardKernel(new ServiceModule());
         }
-        public MainViewModel MainViewModel => kernel.Get<MainViewModel>();
+        public UserMainViewModel UserMainViewModel => kernel.Get<UserMainViewModel>();
         public RegistrationViewModel RegistrationViewModel => kernel.Get<RegistrationViewModel>();
         public LogInViewModel LogInViewModel => kernel.Get<LogInViewModel>();
+        public MainViewModel MainViewModel => kernel.Get<MainViewModel>();
+        public AuthorizationViewModel AuthorizationViewModel => kernel.Get<AuthorizationViewModel>();
+        public PostViewModel PostViewModel => kernel.Get<PostViewModel>();
     }
 }

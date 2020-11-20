@@ -16,5 +16,9 @@ namespace BLL.Services.UserService
         void LogOut();
         bool CreateNewAccount(UserDTO user);
         bool DeleteAccount(UserAuthorizationInfo authorizationInfo);
+
+        event Action LogInned;
+        event Action LogOuted;
+        event Action Registered;
     }
 }

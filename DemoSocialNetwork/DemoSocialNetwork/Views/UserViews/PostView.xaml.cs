@@ -1,6 +1,4 @@
-﻿using ControlzEx.Theming;
-using DemoSocialNetwork.Infrastructure;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DemoSocialNetwork.Views
+namespace DemoSocialNetwork.Views.UserViews
 {
     /// <summary>
-    /// Логика взаимодействия для MainView.xaml
+    /// Логика взаимодействия для PostView.xaml
     /// </summary>
-    public partial class MainView : Window
+    public partial class PostView : UserControl
     {
-        public MainView()
+        public PostView()
         {
             InitializeComponent();
         }

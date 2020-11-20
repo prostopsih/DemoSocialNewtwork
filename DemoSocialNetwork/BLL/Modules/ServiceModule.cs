@@ -18,7 +18,7 @@ namespace BLL.Modules
     {
         public override void Load()
         {
-            Bind<IUserService>().To<UserService>();
+            Bind<IUserService>().To<UserService>().InSingletonScope();
             Bind<IPostService>().To<PostService>();
             Bind<IAvatarService>().To<AvatarService>();
 

@@ -1,5 +1,5 @@
-﻿using ControlzEx.Theming;
-using DemoSocialNetwork.Infrastructure;
+﻿using DemoSocialNetwork.Infrastructure;
+using DemoSocialNetwork.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,16 +12,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace DemoSocialNetwork.Views
 {
     /// <summary>
-    /// Логика взаимодействия для MainView.xaml
+    /// Логика взаимодействия для LogIn.xaml
     /// </summary>
-    public partial class MainView : Window
+    public partial class LogInView : UserControl
     {
-        public MainView()
+        public LogInView()
         {
             InitializeComponent();
         }

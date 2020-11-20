@@ -44,6 +44,7 @@ namespace BLL.Services.AvatarService
         public AvatarDTO CreateOrUpdate(AvatarDTO entity)
         {
             var resAvatar = mapper.Map<Avatar>(entity);
+            resAvatar.UserId = LoginnedUser.LoggedUser.UserId;
             avatarRepository.CreateOrUpdate(resAvatar);
 
             var resAvaSignature = mapper.Map<AvaSignature>(entity);
@@ -56,12 +57,15 @@ namespace BLL.Services.AvatarService
 
         public AvatarDTO Get(int id)
         {
-            return mapper.Map<AvatarDTO>(avatarRepository.Get(id));
+            var res = avatarRepository.Get(id);
+            if (res.UserId == LoginnedUser.LoggedUser.UserId)
+                return mapper.Map<AvatarDTO>(res);
+            return null;
         }
 
         public IEnumerable<AvatarDTO> GetAll()
         {
-            return mapper.Map<IEnumerable<AvatarDTO>>(avatarRepository.GetAll());
+            return mapper.Map<IEnumerable<AvatarDTO>>(avatarRepository.GetAll().Where(x => x.UserId == LoginnedUser.LoggedUser.UserId));
         }
 
         public void Remove(AvatarDTO entity)

@@ -4,9 +4,39 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoSocialNetwork.Views"
+        xmlns:p="clr-namespace:DemoSocialNetwork.Properties"
         mc:Ignorable="d"
-        Title="MainView" Height="450" Width="800">
-    <Grid>
+        Title="{x:Static p:Resources.DemoSocialNetwork}" Height="450" Width="800"
+        DataContext="{StaticResource vmlocator}">
+    <Grid DataContext="{Binding MainViewModel}" x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="19*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" >
+            <MenuItem Header="{x:Static p:Resources.Account}">
+                <MenuItem Header="{x:Static p:Resources.Log_out}" Command="{Binding LogOutCommand}">
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="{x:Static p:Resources.Theme}">
+                <MenuItem Header="{x:Static p:Resources.Light}"
+                          Command="{Binding ChangeThemeCommand}"
+                          CommandParameter="Light"></MenuItem>
+                <MenuItem Header="{x:Static p:Resources.Dark}"
+                          Command="{Binding ChangeThemeCommand}"
+                          CommandParameter="Dark"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="{x:Static p:Resources.Language}">
+                <MenuItem Header="{x:Static p:Resources.Russian}"
+                          Command="{Binding ChangeLocaleCommand}"
+                          CommandParameter="ru-RU"></MenuItem>
+                <MenuItem Header="{x:Static p:Resources.English}"
+                          Command="{Binding ChangeLocaleCommand}"
+                          CommandParameter="en"></MenuItem>
+            </MenuItem>
+        </Menu>
+        
+        <ContentControl Grid.Row="1" Content="{Binding CurrentView}"></ContentControl>
         
     </Grid>
 </Window>
